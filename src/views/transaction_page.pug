@@ -4,13 +4,15 @@ html(lang="en")
         title Transaction page
     body 
         h1 Transaction Infromation
-        table(style="border: black solid 2px")
+        table
             tr
                 td Vendor
-                td= vendor
+                td &nbsp;
+                td #{vendor}
             tr
                 td Amount
-                td #{currency} #{amount}
+                td &nbsp;
+                td #{currency} #{amount/100}
         form(action="/session", method="post") 
             input(type="hidden", name="session_id",value=session_id)
             button(type="submit", name="operation",value="APPROVE") Approve the transaction

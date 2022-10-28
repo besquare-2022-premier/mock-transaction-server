@@ -13,7 +13,7 @@ application.use("/session", session_app.app);
 //generate one session if TEST is set
 if (process.env.TEST) {
   session_app.session_map["TEST"] = new Session(
-    new TransactionRequest("Backend", 2000, "MYR")
+    new TransactionRequest("Backend", 2000, "MYR", "/")
   );
   console.log("Use session_id=TEST to test the pages");
 }

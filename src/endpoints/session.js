@@ -40,16 +40,27 @@ app.get("/all", function (req, res) {
  * Checkout page
  */
 app.get("/checkout", function (req, res) {
-  if (!req.query.session_id) {
+  const { session_id } = req.query;
+  if (!session_id) {
     res.status(400).end("No idea on what to do");
     return;
   }
-  const session = session_map[req.query.session_id];
+  const session = session_map[session_id];
   if (!session) {
     res.status(404).end("Invalid id");
     return;
   }
-  res.render("transaction_page", session);
+  if (session_id === "TEST") {
+    session.status = Session.Status.CREATED;
+  }
+  if (session.isFinallized) {
+    res.status(400).end("Finalized tx. Nothing can do");
+    return;
+  }
+  res.render("transaction_page", {
+    ...session.request,
+    session_id,
+  });
 });
 //make a new session
 app.put("/", async function (req, res) {
@@ -109,6 +120,6 @@ app.post("/", function (req, res) {
   //apply the operation onto the session
   operation_fn.call(session);
   //redirect the users
-  res.redirect(301, session.request.return_url).end();
+  res.redirect(301, session.request.return_url);
 });
 module.exports = { app, session_map };
