@@ -28,11 +28,28 @@ async function randomID() {
 let app = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set("view engine", "pug");
+app.set("views", "./src/views");
 /**
  * Get all sessions for debug use
  */
 app.get("/all", function (req, res) {
   res.json(session_map).end();
+});
+/**
+ * Checkout page
+ */
+app.get("/checkout", function (req, res) {
+  if (!req.query.session_id) {
+    res.status(400).end("No idea on what to do");
+    return;
+  }
+  const session = session_map[req.query.session_id];
+  if (!session) {
+    res.status(404).end("Invalid id");
+    return;
+  }
+  res.render("transaction_page", session);
 });
 //make a new session
 app.put("/", async function (req, res) {
