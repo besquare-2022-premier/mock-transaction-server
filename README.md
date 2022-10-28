@@ -1,6 +1,4 @@
-# Backend Template
-
-This repository serves as a template repository for all ExpressJS based backend project.
+# Mock Transaction Server
 
 ## Structure
 
@@ -9,3 +7,13 @@ This repository serves as a template repository for all ExpressJS based backend 
 | `src`     | The source code   |
 | `test`    | The test suite    |
 | `.github` | CI related stuffs |
+
+## Public Endpoints
+
+| Method | Endpoint                        | Description                  |
+| ------ | ------------------------------- | ---------------------------- |
+| GET    | `/session/all`                  | Get all session              |
+| POST   | `/session`                      | Perform operation on session |
+| GET    | `/session/:id`                  | Get session info             |
+| GET    | `/session/checkout?session_id=` | Checkout page                |
+| PUT    | `/session`                      | New session                  |

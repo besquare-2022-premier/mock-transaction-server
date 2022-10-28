@@ -1,7 +1,7 @@
 {
-  "name": "be-template",
+  "name": "mock-transaction-server",
   "version": "1.0.0",
-  "description": "Template repository for the Backend development",
+  "description": "Mock transaction server for QA and development",
   "main": "./src/index.js",
   "scripts": {
     "test": "jest --no-cache",
