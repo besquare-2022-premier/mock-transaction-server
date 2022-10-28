@@ -40,4 +40,11 @@ describe("Transaction session management", () => {
     //check the status
     await expectSessionState(application, session_id, "SUCCEEDED");
   });
+  it("The tx enumuration endpoint shall show all txs", async function () {
+    const res = await request(application)
+      .get("/session/all")
+      .accept("application/json")
+      .expect(200);
+    expect(res.body[session_id]).toBeTruthy();
+  });
 });
