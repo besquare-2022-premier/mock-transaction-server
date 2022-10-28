@@ -14,7 +14,7 @@ describe("Transaction session management", () => {
       "Backend",
       1000,
       "MYR",
-      "http://ops-test.merch-paradise.xyz"
+      "https://ops-test.merch-paradise.xyz/"
     );
     const res = await request(application)
       .put("/session")
@@ -35,7 +35,7 @@ describe("Transaction session management", () => {
       application,
       session_id,
       ops,
-      "http://ops-test.merch-paradise.xyz/commit"
+      "https://ops-test.merch-paradise.xyz/"
     );
     //check the status
     await expectSessionState(application, session_id, "SUCCEEDED");

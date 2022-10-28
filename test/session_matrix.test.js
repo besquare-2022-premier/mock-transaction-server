@@ -20,7 +20,7 @@ describe("Transaction state transition matrix test", () => {
         "Backend",
         1000,
         "MYR",
-        "http://ops-test.merch-paradise.xyz"
+        "https://ops-test.merch-paradise.xyz/"
       );
       const res = await request(application)
         .put("/session")
@@ -30,12 +30,12 @@ describe("Transaction state transition matrix test", () => {
         .expect(200);
       expect(isString(res.body.session_id)).toStrictEqual(true);
       let session_id = res.body.session_id;
-      await expectSessionState(application, session_id, ops);
+      await expectSessionState(application, session_id, "CREATED");
       await finalizeTransaction(
         application,
         session_id,
         ops,
-        "http://ops-test.merch-paradise.xyz/commit"
+        "https://ops-test.merch-paradise.xyz/"
       );
       //check the status
       await expectSessionState(application, session_id, knownStates[ops]);

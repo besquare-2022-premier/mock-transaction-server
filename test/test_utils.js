@@ -12,9 +12,7 @@ module.exports = {
       .post("/session/")
       .send(`session_id=${session_id}&operation=${ops}`)
       .expect(301);
-    if (return_url) {
-      expect(res.get("Location")).toStrictEqual(return_url);
-    }
+    expect(res.get("Location")).toStrictEqual(return_url);
   },
   /**
    * @param {Express.Application} app
