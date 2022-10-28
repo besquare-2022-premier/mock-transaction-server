@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        title Transaction page
+    body 
+        h1 Transaction Infromation
+        table
+            tr
+                td Vendor
+                td &nbsp;
+                td #{vendor}
+            tr
+                td Amount
+                td &nbsp;
+                td #{currency} #{amount/100}
+        form(action="/session", method="post") 
+            input(type="hidden", name="session_id",value=session_id)
+            button(type="submit", name="operation",value="APPROVE") Approve the transaction
+            button(type="submit", name="operation",value="REJECT") Reject the transaction
+            button(type="submit", name="operation",value="CANCEL") Cancel the transaction
+        br
+        div Note: this is built for QA purpose only. Do not use it in production
