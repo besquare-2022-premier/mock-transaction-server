@@ -1,9 +1,12 @@
+const session_app = require("./endpoints/session");
+
 const application = require("express")();
 
 application.get("/", function (req, res) {
   res.write("Hurray");
   res.end();
 });
+application.use("/session", session_app);
 
 if (process.env.JEST_WORKER_ID) {
   //export the application as a module when it is being tested
