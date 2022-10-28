@@ -29,13 +29,13 @@ class TransactionRequest {
     if (!type_check.isString(object.vendor)) {
       return null;
     }
-    if (!type_check.isInteger(object.amount)) {
+    if (!type_check.isInteger(object.amount) || object.amount <= 0) {
       return null;
     }
     if (object.currency !== "MYR") {
       return null;
     }
-    if (type_check.isString(object.return_url)) {
+    if (!type_check.isString(object.return_url)) {
       return null;
     }
     return new TransactionRequest(

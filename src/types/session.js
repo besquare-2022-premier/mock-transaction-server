@@ -37,10 +37,10 @@ class Session {
    * Check weather is the session is finalized
    */
   get isFinallized() {
-    return this.status !== SessionStatus.CANCELLED;
+    return this.status !== SessionStatus.CREATED;
   }
   #assertNotFinalized() {
-    if (!this.isFinallized()) {
+    if (this.isFinallized) {
       throw new Error("Cannot update the finalized session");
     }
   }
