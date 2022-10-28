@@ -6,7 +6,7 @@ application.get("/", function (req, res) {
   res.write("Hurray");
   res.end();
 });
-application.use("/session", session_app);
+application.use("/session", session_app.app);
 
 if (process.env.JEST_WORKER_ID) {
   //export the application as a module when it is being tested

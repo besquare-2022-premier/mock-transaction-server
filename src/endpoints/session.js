@@ -24,8 +24,8 @@ async function randomID() {
   });
   return bytes.toString("hex");
 }
-//define a router
-let app = express.Router();
+//define a app
+let app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "pug");
@@ -111,4 +111,4 @@ app.post("/", function (req, res) {
   //redirect the users
   res.redirect(301, session.request.return_url).end();
 });
-module.exports = app;
+module.exports = { app };
