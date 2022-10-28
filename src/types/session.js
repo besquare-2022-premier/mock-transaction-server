@@ -56,6 +56,12 @@ class Session {
     this.#assertNotFinalized();
     this.status = SessionStatus.SUCCEEDED;
   }
+  toJSON() {
+    //spread out this object's properties
+    const ret = { ...this };
+    ret.status = ret.status.description;
+    return ret;
+  }
 }
 /**
  * The statuses for the session
