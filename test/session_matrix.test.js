@@ -5,7 +5,7 @@
 const application = require("../src/index.js");
 const request = require("supertest");
 const TransactionRequest = require("../src/types/request.js");
-const { isString } = require("../src/utils/type-check.js");
+const { isString } = require("@junchan/type-check");
 const { finalizeTransaction, expectSessionState } = require("./test_utils.js");
 const knownStates = {
   APPROVE: "SUCCEEDED",

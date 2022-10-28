@@ -1,4 +1,4 @@
-const type_check = require("../utils/type-check");
+const type_check = require("@junchan/type-check");
 /**
  * The transaction request
  */
